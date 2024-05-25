@@ -36,13 +36,11 @@ form {
     margin-bottom: 200px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.508);
     border-radius: 10px;
-    
 }
 
 #flagAndArms {
-    justify-content: space-around;
-    margin-left: 25%;
-    margin-right: 25%;
+    justify-content: center;
+
 }
 
 #countryName {
@@ -51,14 +49,13 @@ form {
 
 #countryCoatOfArms {
     width: 100%;
-    max-width: 150px;
+    max-width: 300px;
     height: auto;
     box-shadow: 2px 10px 5px rgba(0, 0, 0, 0.508);
     border-radius: auto;
 }
 
 #countryFlag {
-    max-width: 250px;
     width: 100%;
     height: auto;
     box-shadow: 2px 10px 5px rgba(0, 0, 0, 0.508);
