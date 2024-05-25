@@ -13,6 +13,7 @@ body {
     border: 3px solid green;
     display: block; 
     margin: auto; 
+    min-width: 140;
 }
 
 form {
@@ -81,8 +82,10 @@ form {
 
 .input-container {
     margin-bottom: 10px;
+    position: relative;
     display: flex;
     justify-content: center;
+    min-width: 100px;
     
 }
 
@@ -107,17 +110,29 @@ form {
     color: black;
     font-family: fantasy;
     font-size: large;
+    min-width: 75px;
     
 
     
 }
 
 #foundMatch {
-    position: absolute;
+    position: relative;
     right: 40%; 
     margin-top: 10px;
     color: green;
     display: none;
+}
+
+@media (max-width: 500px) {
+    #foundMatch {
+    position: relative;
+    right: 30%; 
+    margin-top: 10px;
+    color: green;
+    display: none;
+    }
+    
 }
 
 .plain {
