@@ -66,19 +66,40 @@ document.getElementById('search-form').addEventListener('submit', function (e) {
 
     let countryNames = [];
 
-    // Fetch all country names
-fetch('https://restcountries.com/v3.1/all')
+    fetch('https://restcountries.com/v3.1/all')
 .then(response => response.json())
 .then(data => {
-    const countryNames = data.map(country => country.name.common.toLowerCase()); 
+    const countryNames = data.map(country => country.name.common); 
     document.getElementById('main-search').addEventListener('input', function() {
-        const userInput = this.value.trim().toLowerCase(); 
-        const isExactMatch = countryNames.includes(userInput); 
+        const userInput = this.value.trim().toLowerCase();
+        const isExactMatch = countryNames.some(name => name.toLowerCase() === userInput);
         document.getElementById('foundMatch').style.display = isExactMatch ? 'inline-block' : 'none';
-        });
-    })
-    .catch(error => console.error('Could not retrieve country names', error));
-
-
-
-
+        
+        
+        let suggestions = countryNames.filter(name => name.toLowerCase().includes(userInput));
+        
+        
+        suggestions = suggestions.slice(0, 7);
+        
+        const suggestionsContainer = document.getElementById('suggestions');
+        
+        suggestionsContainer.innerHTML = '';
+        
+        
+        if (userInput && suggestions.length) {
+            suggestions.forEach(name => {
+                const suggestionItem = document.createElement('li');
+                suggestionItem.textContent = name;
+                suggestionItem.onclick = function() {
+                    document.getElementById('main-search').value = this.textContent;
+                    suggestionsContainer.style.display = 'none'; 
+                };
+                suggestionsContainer.appendChild(suggestionItem);
+            });
+            suggestionsContainer.style.display = 'block';
+        } else {
+            suggestionsContainer.style.display = 'none';
+        }
+    });
+})
+.catch(error => console.error('Could not retrieve country names', error));
