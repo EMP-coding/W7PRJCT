@@ -173,10 +173,20 @@ form {
     } 
     #countryCoatOfArms {
         min-width: 350px;
-        
-        
+    }
+    .info {
+        font-size: x-large;
     }
 }
+
+@media (min-width: 768px) {
+    .info {
+        font-size: larger;
+    }
+
+
+}
+
 .plain {
     text-decoration: none;
     color: black;
